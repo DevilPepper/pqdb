@@ -29,14 +29,14 @@
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Login to Your Account</h1><br>
-					<form id="login_form" method="post" action={% url "login.views.user_login" %}>
+					<form id="login_form" method="post" action={% url "login.views.user_login" %}?next={{request.path}}>
             		{% csrf_token %}
             			<input type="text" name="username" placeholder="Username" />
             			<input type="password" name="password" placeholder="Password" />
             			<input type="submit" class="login loginmodal-submit" value="login" />
         			</form>
 				  <div class="login-help">
-						<a href={% url "login.views.register" %}>Register</a>
+						<a href={% url "login.views.register" %}?next={{request.path}}>Register</a>
 				  </div>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Another action</a></li>
-                    <li><a href="">Log out</a></li>
+                    <li><a href={% url "login.views.user_logout" %}?next={{request.path}}>Log out</a></li>
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">Nav header</li>
                     <li><a href="#">Separated link</a></li>

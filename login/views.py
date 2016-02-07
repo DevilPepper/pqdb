@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from login.forms import UserForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def register(request):
@@ -50,6 +51,14 @@ def register(request):
             {'user_form': user_form, 'registered': registered},
             context)
 
+@login_required
+def user_logout(request):
+	# Since we know the user is loggin in, we can now just log them out.
+	logout(request)
+
+	# Take the user back to the previous page.
+	return HttpResponseRedirect(request.REQUEST.get('next', ''))
+
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
@@ -74,7 +83,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/login/')
+                return HttpResponseRedirect(request.REQUEST.get('next', ''))
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your account is disabled.")
@@ -88,4 +97,5 @@ def user_login(request):
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response(request.get_full_path, {}, context)
+        #return HttpResponseRedirect(request.REQUEST.get('next', ''))
+        return render_to_response(request.REQUEST.get('next', ''), {}, context)

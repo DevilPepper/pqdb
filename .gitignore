@@ -20,3 +20,4 @@ tests/report/
 *.swp
 docs/
 */migrations/
+db.sqlite3
