@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -25,8 +25,9 @@ SECRET_KEY = 'vq*d=_j1zevlp60f+h4!x40&8qj^!90a3581ns+vy-7f-383^%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+DJANGO_SETTINGS_MODULE = 'pqdb.settings'
 
 # Application definition
 
@@ -37,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'login',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,18 +55,28 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'pqdb.urls'
 
+#TEMPLATE_DIRS = (
+#    os.path.join(SETTINGS_PATH, 'templates'),
+#)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
+        'DIRS': ['pqdb/templates/', 'home/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]
@@ -99,4 +112,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "pqdb/static"),
+)
+
+FIXTURE_DIRS = (
+   'pqdb/fixtures/',
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+MEDIA_URL = 'media/'

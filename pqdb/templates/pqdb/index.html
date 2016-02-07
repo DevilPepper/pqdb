@@ -1,0 +1,117 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href=" {% static "favicon.png" %}">
+
+    <title>PQDB</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
+
+	<script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href=" {% static "cust.css" %}" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+					<form id="login_form" method="post" action={% url "login.views.user_login" %}>
+            		{% csrf_token %}
+            			<input type="text" name="username" placeholder="Username" />
+            			<input type="password" name="password" placeholder="Password" />
+            			<input type="submit" class="login loginmodal-submit" value="login" />
+        			</form>
+				  <div class="login-help">
+						<a href={% url "login.views.register" %}>Register</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="">EBShare</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="#about">About</a></li>
+                <li><a href="">Book Shelf</a></li>
+                {% if user.is_authenticated %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome {{ user.username }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="">Log out</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+				<li><a href="">Check invitations</a></li>
+                {% else %}
+				<li class="active"><a href="#" data-toggle="modal" data-target="#login-modal">Log in</a></li>
+                {% endif %}                             
+              </ul>
+                <div class="col-sm-3 col-md-6 pull-right">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group col-sm-3 col-md-5 pull-right">
+                            <input type="text" class="form-control" placeholder="Search books" name="q">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>               
+            </div>
+               
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+	<script>
+	//On every page load, run this POST request
+	$.ajax({
+		url: '',
+		type: "POST",
+	});
+	</script>
+
+  </body>
+</html>
+
