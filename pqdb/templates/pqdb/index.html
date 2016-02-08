@@ -66,9 +66,9 @@
               <ul class="nav navbar-nav">
                 <li><a href={% url "home.views.renderAbout" %}>About</a></li>
                 {% if user.is_authenticated %}
-				<li><a href="">Queue</a></li>
-				<li><a href="">Push</a></li>
-				<li><a href="">Progress</a></li>
+				<li><a href={% url "queue.views.renderQueue" %}>Queue</a></li>
+				<li><a href="">Push</a></li><!-- should be add button in queue.html -->
+				<li><a href={% url "queue.views.renderProgress" %}>Progress</a></li>
                 {% endif %}                             
               </ul>
 
@@ -103,6 +103,9 @@
       </div>
     </div>
 
+	<br />
+	<br />
+	<br />
     {% block body %}
     {% endblock %}
 

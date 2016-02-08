@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'home',
     'login',
+    'queue',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,7 +64,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
-        'DIRS': ['pqdb/templates/', 'home/templates/'],
+        'DIRS': ['pqdb/templates/', 'home/templates/',
+            'login/templates', 'queue/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
