@@ -7,3 +7,9 @@ def renderHome(request):
 	context = RequestContext(request)
 
 	return render_to_response('home/home.html', {}, context)
+
+def renderAbout(request):
+        #get general context
+	context = RequestContext(request)
+
+	return render_to_response('home/about.html', {}, context)
