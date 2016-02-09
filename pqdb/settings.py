@@ -118,7 +118,7 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "pqdb/static"),
+    os.path.join(BASE_DIR, "static"),
 )
 
 FIXTURE_DIRS = (
