@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'pqdb.wsgi.application'
 
 #Server=tcp:stuff.database.windows.net,1433;Database=pqdb;User ID=SupaStuff@stuff;Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-ON_AZURE = os.environ.get('ON_AZURE')
+COMPUTERNAME = os.environ.get('COMPUTERNAME')
 
 if COMPUTERNAME=="RD000D3A702311":
     DATABASES = {
