@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'pqdb.wsgi.application'
 
 ON_AZURE = os.environ.get('ON_AZURE')
 
-if ON_AZURE:
+if COMPUTERNAME=="RD000D3A702311":
     DATABASES = {
         'default': {
             'ENGINE': 'sql_server.pyodbc',
