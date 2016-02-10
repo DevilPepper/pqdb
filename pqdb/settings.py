@@ -89,12 +89,32 @@ WSGI_APPLICATION = 'pqdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#Server=tcp:stuff.database.windows.net,1433;Database=pqdb;User ID=SupaStuff@stuff;Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+ON_AZURE = os.environ.get('ON_AZURE')
+
+if ON_AZURE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'sql_server.pyodbc',
+            'NAME': 'pqdb',
+            'USER': 'SupaStuff@stuff',
+            'PASSWORD': '{your_password_here}',
+            'HOST': 'tcp:stuff.database.windows.net',
+            'PORT': '1433',
+            'OPTIONS': {
+                'driver': 'SQL Server Native Client 11.0',
+                'MARS_Connection': 'True',
+            }
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Internationalization

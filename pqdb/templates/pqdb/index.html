@@ -74,10 +74,10 @@
 
 			 	<ul class="nav navbar-nav pull-right">
 				  	{% if user.is_authenticated %}
-						<li>Welcome, {{user.username}}!</li>
+					<li><span>Welcome, {{user.username}}!</span></li>
 			 			<li><a href={% url "login.views.user_logout" %}?next={{request.path}}>Log out</a></li>
 					{% else %}
-						<li>Welcome, Stranger!</li>
+					<li><span>Welcome, Stranger!</span></li>
 						<li class="active"><a href="#" data-toggle="modal" data-target="#login-modal">Log in</a></li>
 					{% endif %}
 			  	</ul>
