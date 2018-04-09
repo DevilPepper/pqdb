@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  ui:
+    build: ./ui
+    command: nodemon server.js
+    volumes:
+     - ./ui:/app
+    ports:
+      - "5000:80"
+      - "5858:5858"
+    networks:
+      - ui-tier
+      - service-tier
+
+  api:
+    build: ./api
+    command: python app.py
+    volumes:
+      - ./api:/app
+    ports:
+      - "80:8080"
+    networks:
+      - service-tier
+      - db-tier
+
+  db:
+    image: postgres:9.4
+    container_name: db
+    #    volumes:
+    #      - "db-data:/var/lib/postgresql/data"
+    networks:
+      - db-tier
+
+# volumes:
+#  db-data:
+
+networks:
+  ui-tier:
+  service-tier:
+  db-tier:
