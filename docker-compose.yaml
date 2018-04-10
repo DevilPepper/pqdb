@@ -3,12 +3,13 @@ version: "3"
 services:
   ui:
     build: ./ui
-    command: nodemon server.js
+    command: npm -- start
     volumes:
      - ./ui:/app
     ports:
       - "5000:80"
       - "5858:5858"
+      - "4200:4200"
     networks:
       - ui-tier
       - service-tier
