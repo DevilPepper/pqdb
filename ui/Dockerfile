@@ -3,18 +3,18 @@ FROM node:8.9-alpine
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY package.json /app/package.json
+ADD package.json /app/package.json
+ADD package-lock.json /app/package-lock.json
+
+RUN npm install
 RUN npm install -g yarn
 RUN yarn global add @angular/cli
+ADD . /app
 
-RUN npm install \
- && npm ls \
- && npm cache clean --force
-COPY . /app
-
-ENV PORT 80
+ENV PORT 8081
 EXPOSE 80
 EXPOSE 4200
+EXPOSE 8081
 
 CMD ["npm", "--", "start"]
 

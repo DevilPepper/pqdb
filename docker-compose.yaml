@@ -6,10 +6,12 @@ services:
     command: npm -- start
     volumes:
      - ./ui:/app
+     - /app/node_modules
     ports:
-      - "5000:80"
+      - "80:80"
       - "5858:5858"
       - "4200:4200"
+      - "8081:8081"
     networks:
       - ui-tier
       - service-tier
@@ -20,7 +22,7 @@ services:
     volumes:
       - ./api:/app
     ports:
-      - "80:8080"
+      - "8080:8080"
     networks:
       - service-tier
       - db-tier
