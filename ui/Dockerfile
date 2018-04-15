@@ -11,10 +11,8 @@ RUN npm install -g yarn
 RUN yarn global add @angular/cli
 ADD . /app
 
-ENV PORT 8081
+ENV PORT 80
 EXPOSE 80
-EXPOSE 4200
-EXPOSE 8081
 
 CMD ["npm", "--", "start"]
 

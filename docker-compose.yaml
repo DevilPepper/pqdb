@@ -3,29 +3,27 @@ version: "3"
 services:
   ui:
     build: ./ui
+    container_name: ui
     command: npm -- start
     volumes:
      - ./ui:/app
      - /app/node_modules
     ports:
-      - "80:80"
-      - "5858:5858"
-      - "4200:4200"
-      - "8081:8081"
+      - "8080:80"
     networks:
-      - ui-tier
-      - service-tier
+      - frontend
 
   api:
     build: ./api
+    container_name: api
     command: python app.py
     volumes:
       - ./api:/app
     ports:
-      - "8080:8080"
+      - "8081:80"
     networks:
-      - service-tier
-      - db-tier
+      - frontend
+      - backend
 
   db:
     image: postgres:9.4
@@ -34,12 +32,11 @@ services:
       - "db-data:/var/lib/postgresql/data"
       - ./sql:/docker-entrypoint-initdb.d/
     networks:
-      - db-tier
+      - backend
 
 volumes:
   db-data:
 
 networks:
-  ui-tier:
-  service-tier:
-  db-tier:
+  frontend:
+  backend:
