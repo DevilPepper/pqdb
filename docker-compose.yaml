@@ -12,6 +12,8 @@ services:
       - "8080:80"
     networks:
       - frontend
+    links:
+      - api
 
   api:
     build: ./api

@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   constructor(private http: HttpClient) { }
   ngOnInit() {
-  	this.http.get("http://api")
+  	this.http.get("http://localhost:8081")
   		 .subscribe(data => console.log(data));
   }
 }
