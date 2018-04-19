@@ -1,8 +1,12 @@
 # Using official python runtime base image
-FROM python:2.7-alpine
+FROM python:3.6.5-alpine3.7
 
 # Set the application directory
 WORKDIR /app
+
+RUN apk update \
+ && apk add --virtual build-deps gcc python-dev musl-dev \
+ && apk add --no-cache postgresql-dev
 
 # Install our requirements.txt
 ADD requirements.txt /app/requirements.txt
