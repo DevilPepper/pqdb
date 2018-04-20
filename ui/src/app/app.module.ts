@@ -11,8 +11,7 @@ import { TodoInputComponent } from './todo-input/todo-input.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoHeaderComponent } from './todo-header/todo-header.component';
-import { AppRoutingModule } from './/app-routing.module';
-
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
