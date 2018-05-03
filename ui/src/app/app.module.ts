@@ -14,6 +14,8 @@ import { TodoListModule } from './module/todo-list/todo-list.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { CRUDService } from './crud.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     TodoListModule,
   ],
-  providers: [],
+  providers: [CRUDService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

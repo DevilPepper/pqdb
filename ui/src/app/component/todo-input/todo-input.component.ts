@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CRUDService } from '../../crud.service';
 
 @Component({
   selector: 'todo-input',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoInputComponent implements OnInit {
 
-  constructor() { }
+  constructor(private crud:CRUDService) { }
 
   ngOnInit() {
   }
