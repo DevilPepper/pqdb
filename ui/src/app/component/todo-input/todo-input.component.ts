@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CRUDService } from '../../crud.service';
+import { Todo } from '../../class/todo.class';
 
 @Component({
   selector: 'todo-input',
@@ -8,9 +9,16 @@ import { CRUDService } from '../../crud.service';
 })
 export class TodoInputComponent implements OnInit {
 
+  description:string;
+  due:string;
+
   constructor(private crud:CRUDService) { }
 
   ngOnInit() {
+  }
+
+  addTodo() {
+    this.crud.addTodo(new Todo(this.description, this.due, false));
   }
 
 }

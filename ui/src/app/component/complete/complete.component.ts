@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CRUDService } from '../../crud.service';
+import { Todo } from '../../class/todo.class';
 
 @Component({
   selector: 'complete',
@@ -8,9 +9,14 @@ import { CRUDService } from '../../crud.service';
 })
 export class CompleteComponent implements OnInit {
 
+  todos: Todo[];
+  todoColumn: string;
+  checkColumn: string;
+
   constructor(private crud:CRUDService) { }
 
   ngOnInit() {
+    this.todos = this.crud.getCompleteList();
   }
 
 }

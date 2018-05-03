@@ -1,2 +1,6 @@
-<todo-header></todo-header>
-<todo></todo>
+<todo-header [todoColumn]="todoColumn" [checkColumn]="checkColumn"></todo-header>
+<ul>
+  <li *ngFor="let todo of todos">
+    <todo [todo]="todo"></todo>
+  </li>
+</ul>

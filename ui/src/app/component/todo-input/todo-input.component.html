@@ -1,5 +1,5 @@
 <div>
-  <input type="text" />
-  <input type="datetime" />
-  <button>Add</button>
+  <input type="text" [(ngModel)]="description" />
+  <input type="datetime" [(ngModel)]="due" />
+  <button (click)="addTodo()">Add</button>
 </div>
