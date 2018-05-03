@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-incomplete',
+  selector: 'incomplete',
   templateUrl: './incomplete.component.html',
   styleUrls: ['./incomplete.component.css']
 })
