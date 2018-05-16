@@ -1,5 +1,17 @@
-<nav>
-  <a routerLink="/home" routerLinkActive="active">Home</a>
-  <a routerLink="/incomplete" routerLinkActive="active">Incomplete</a>
-  <a routerLink="/complete" routerLinkActive="active">Complete</a>
+<nav class="navbar is-dark is-transparent">
+    <div class="navbar-brand">
+        <a class="navbar-item" routerLink="/home" routerLinkActive="active">pqdb</a>
+        <div class="navbar-burger burger" data-target="naviItems">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="navbar-menu" id="naviItems">
+        <div class="navbar-start">
+            <a class="navbar-item" routerLink="/home" routerLinkActive="active">Home</a>
+            <a class="navbar-item" routerLink="/incomplete" routerLinkActive="active">Incomplete</a>
+            <a class="navbar-item" routerLink="/complete" routerLinkActive="active">Complete</a>
+        </div>
+    </div>
 </nav>
