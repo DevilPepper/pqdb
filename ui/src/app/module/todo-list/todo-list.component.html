@@ -1,6 +1,8 @@
-<todo-header [todoColumn]="todoColumn" [checkColumn]="checkColumn"></todo-header>
-<ul>
-  <li *ngFor="let todo of todos">
-    <todo [todo]="todo"></todo>
-  </li>
-</ul>
+<div class="container">
+    <todo-header [todoColumn]="todoColumn" [checkColumn]="checkColumn"></todo-header>
+    <ul>
+        <li *ngFor="let todo of todos">
+            <todo [todo]="todo"></todo>
+        </li>
+    </ul>
+</div>

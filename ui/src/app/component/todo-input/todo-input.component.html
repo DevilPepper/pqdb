@@ -1,5 +1,14 @@
-<div>
-  <input type="text" [(ngModel)]="description" />
-  <input type="datetime" [(ngModel)]="due" />
-  <button (click)="addTodo()">Add</button>
+<div class="field has-addons">
+    <div class="control">
+        <input class="input" type="text" [(ngModel)]="description" />
+    </div>
+    <div class="control">
+        <input class="input" type="date" [(ngModel)]="due" />
+    </div>
+    <div class="control">
+        <input class="input" type="time" />
+    </div>
+    <div class="control">
+        <button class="button" (click)="addTodo()">Add</button>
+    </div>
 </div>
