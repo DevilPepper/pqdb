@@ -1,4 +1,4 @@
-<div>
-  <span>{{todo.description}} | {{todo.due}}</span>
-  <input type="checkbox" [(ngModel)]="todo.done" />
+<div class="columns is-mobile">
+  <div class="column is-four-fifths">{{todo.description}} | {{todo.due}}</div>
+  <div class="column"><input type="checkbox" [(ngModel)]="todo.done" /></div>
 </div>
