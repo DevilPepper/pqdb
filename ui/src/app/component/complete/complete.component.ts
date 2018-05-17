@@ -10,8 +10,8 @@ import { Todo } from '../../class/todo.class';
 export class CompleteComponent implements OnInit {
 
   todos: Todo[];
-  todoColumn: string;
-  checkColumn: string;
+  todoColumn: string = "Complete";
+  checkColumn: string = "Done";
 
   constructor(private crud:CRUDService) { }
 
