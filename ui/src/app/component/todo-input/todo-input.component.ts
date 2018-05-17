@@ -10,7 +10,8 @@ import { Todo } from '../../class/todo.class';
 export class TodoInputComponent implements OnInit {
 
   description:string;
-  due:string;
+  dueDate:string;
+  dueTime:string;
 
   constructor(private crud:CRUDService) { }
 
@@ -18,7 +19,7 @@ export class TodoInputComponent implements OnInit {
   }
 
   addTodo() {
-    this.crud.addTodo(new Todo(this.description, this.due, false));
+    this.crud.addTodo(new Todo(this.description, this.dueDate, this.dueTime false));
   }
 
 }

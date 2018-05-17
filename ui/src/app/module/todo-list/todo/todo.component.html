@@ -1,5 +1,17 @@
 <div class="columns is-mobile">
-  <div class="column is-four-fifths">{{todo.description}} | {{todo.due}}</div>
+  <div class="column is-four-fifths">
+    <div class="field has-addons">
+        <div class="control">
+            <div class="input">{{todo.description}}</div>
+        </div>
+        <div class="control">
+            <div class="input">{{todo.dueDate}}</div>
+        </div>
+        <div class="control">
+            <div class="input">{{todo.dueTime}}</div>
+        </div>
+    </div>
+  </div>
   <div class="column"><input type="checkbox" [(ngModel)]="todo.done" /></div>
 </div>
 <br />
