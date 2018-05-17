@@ -1,8 +1,4 @@
 <div class="container">
     <todo-header [todoColumn]="todoColumn" [checkColumn]="checkColumn"></todo-header>
-    <div class="tile box has-background-primary">
-        <div *ngFor="let todo of todos">
-            <todo [todo]="todo"></todo>
-        </div>
-    </div>
+    <todo *ngFor="let todo of todos" [todo]="todo"></todo>
 </div>
