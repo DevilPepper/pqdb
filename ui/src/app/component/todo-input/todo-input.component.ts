@@ -19,7 +19,7 @@ export class TodoInputComponent implements OnInit {
   }
 
   addTodo() {
-    this.crud.addTodo(new Todo(this.description, this.dueDate, this.dueTime false));
+    this.crud.addTodo(new Todo(this.description, this.dueDate, this.dueTime, false));
   }
 
 }
